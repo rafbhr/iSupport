@@ -1,0 +1,35 @@
+# codemagic.yaml
+
+# Define the workflow
+workflows:
+  # Specify the workflow name (you can customize it)
+  default-workflow:
+    # Define the triggers for the workflow
+    trigger:
+      # Trigger the workflow on every push to the specified branches
+      branches:
+        include:
+          - main  # Adjust the branch name as needed
+
+    # Specify the jobs to run in the workflow
+    jobs:
+      # Define the job name (you can customize it)
+      build:
+        # Specify the machine type for the job (e.g., macOS-2)
+        macos:
+          xcode: 12.5.1  # Specify the Xcode version
+        # Specify the Flutter version for the job
+        flutter:
+          version: '2.12.0'  # Adjust the Flutter version as needed
+
+        # Define the build script for the job
+        scripts:
+          # Install dependencies
+          - flutter pub get
+
+          # Build the iOS app (debug mode with no code signing)
+          - flutter build ios --debug --no-codesign
+
+# Specify the Flutter channel for the project
+flutter:
+  channel: stable
