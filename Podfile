@@ -1,6 +1,6 @@
 # Podfile
 
-platform :ios, '12.0'
+platform :ios, '10.0'
 
 target 'Runner' do
   use_frameworks!
